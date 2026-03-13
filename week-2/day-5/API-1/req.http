@@ -1,0 +1,62 @@
+###Read all users
+GET http://localhost:3000/user-api/users
+
+###Read user by id
+GET http://localhost:3000/user-api/users/132
+
+###Create an user
+POST http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":132,
+    "name":"Rajesh",
+    "age":20,
+    "salary":10000
+}
+
+###Update an user
+PUT http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":132,
+    "name":"Lokesh",
+    "age":20,
+    "salary":20000
+}
+
+###Delete a user
+DELETE http://localhost:3000/user-api/users/132
+
+###Read all products
+GET http://localhost:3000/product-api/product
+
+###Read products by brand
+GET http://localhost:3000/product-api/product/apsara
+
+
+###Create a product
+POST http://localhost:3000/product-api/product
+Content-Type: application/json
+
+{
+    "productId":5,
+    "productName":"Book",
+    "brand":"Classmate",
+    "price":25
+}
+
+###Update a product
+PUT http://localhost:3000/product-api/product
+Content-Type: application/json
+
+{
+    "productId":5,
+    "productName":"Pencil",
+    "brand":"Natraj",
+    "price":10
+}
+
+###Delete a product 
+DELETE http://localhost:3000/product-api/product/5

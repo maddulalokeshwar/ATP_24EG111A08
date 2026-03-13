@@ -1,0 +1,77 @@
+###Read all users(request to a protected route)
+GET http://localhost:4000/user-api/users
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxva2lAZ21haWwuY29tIiwiaWF0IjoxNzcyODc3MjY4LCJleHAiOjE3NzI4NzcyODh9._oc6ayi7lhoXox0CqlRJPc-8hfuMy-g27MAm-3cT_KE; Path=/; HttpOnly; SameSite=Lax
+###Read user by id(Same origin request so we need not to send the token everytime it takes implicitly)
+GET http://localhost:4000/user-api/user
+
+###Create an user
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "username":"loki",
+    "password":"12333298",
+    "email":"loki@gmail.com",
+    "age":21
+}
+
+###User login
+POST http://localhost:4000/user-api/auth
+Content-Type: application/json
+
+{
+    "email":"loki@gmail.com",
+    "password":"12333298"
+}
+
+###Update an user
+PUT http://localhost:4000/user-api/users
+Content-Type: application/json
+Cookie:  token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxva2lAZ21haWwuY29tIiwiaWF0IjoxNzcyODc0MTU3LCJleHAiOjE3NzI5NjA1NTd9.6kB_-tuHljsnxTglpu1VpBwKfGx-Wv-3ZU86VhYt1Qo; Path=/; HttpOnly; SameSite=Lax
+
+
+{
+    "username":"Lokesh",
+    "password":"12345678",
+    "email":"lokesh@gmail.com",
+    "age":21
+}
+
+###Delete a user
+DELETE http://localhost:4000/user-api/users/69aa642a3b7452dabfa2a9e0
+
+###Add products to cart
+PUT http://localhost:4000/user-api/cart/product-id/69ab05e40d89ec9e696b9d88
+
+###Read all products
+GET http://localhost:4000/product-api/product
+Cookie:  token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxva2lAZ21haWwuY29tIiwiaWF0IjoxNzcyODc3NzU2LCJleHAiOjE3NzI4Nzc3NzZ9.Lxvd2ta-8wabT1r67MH5Cd9vx1mQnf4kDnJ3y4nKgjw; Path=/; HttpOnly; SameSite=Lax
+
+###Read products by id
+GET http://localhost:4000/product-api/product/4
+
+
+###Create a product
+POST http://localhost:4000/product-api/product
+Content-Type: application/json
+
+{
+    "productId":5,
+    "productName":"Bag",
+    "price":10000,
+    "brand":"Lavie Sport"
+}
+
+###Update a product by id
+PUT http://localhost:4000/product-api/product/4
+Content-Type: application/json
+
+{
+    "productId":4,
+    "productName":"Mobile",
+    "brand":"Samsung",
+    "price":45000
+}
+
+###Delete a product 
+DELETE http://localhost:4000/product-api/product/1
