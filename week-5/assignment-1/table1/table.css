@@ -1,0 +1,18 @@
+*{
+    padding: 0px;
+    width: 0px;
+}
+
+table{
+    width: 700px;
+    margin: auto;
+    margin-top: 200px;
+    margin-left: 200px;
+    text-align: center;
+}
+
+table,th,td{
+    border:1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
