@@ -1,0 +1,50 @@
+###registeration 
+POST http://localhost:4000/auth/users
+Content-Type: application/json
+
+{
+  "FirstName": "Hriday",
+  "LastName": "Porika",
+  "email": "hriday@mail.com",
+  "password": "@123456",
+  "role": "AUTHOR",
+  "profileImageUrl": "profilephoto.png",
+  "isUserActive": true
+}
+
+###Login 
+POST http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+  "email": "raji@mail.com",
+  "password": "@1234567890"
+}
+
+###Change password
+PUT http://localhost:4000/auth/password
+Content-Type: application/json
+
+{
+  "currentPassword":"1234565904",
+  "newPassword":"@1234567890"
+}
+
+###Logout 
+GET http://localhost:4000/auth/logout
+
+
+###Read articles of all authors
+GET http://localhost:4000/user-api/articles
+
+###Write a comment
+PUT http://localhost:4000/user-api/articles
+Content-Type: application/json
+
+{
+  "articleId":"69b3ca1c22fbcab18fba7af5",
+  "comment":"It is a nice book which is detailing about the dinosuarus"
+}
+
+
+

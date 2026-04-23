@@ -1,0 +1,21 @@
+###Admin login
+POST http://localhost:4000/admin-api/login
+Content-Type: application/json
+
+{
+  "email": "admin1@123",
+  "password": "12345"
+}
+
+###Read all USERS & AUTHORS(email)
+GET http://localhost:4000/admin-api/users
+
+
+###BLOCK or Activate USER OR AUTHOR
+PUT http://localhost:4000/admin-api/user-status
+Content-Type: application/json
+
+{
+  "userId": "69b39362bae2fa0ac4b232b4",
+  "isUserActive": false
+}
