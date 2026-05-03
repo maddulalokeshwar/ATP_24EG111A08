@@ -13,44 +13,42 @@ function CreateEmp() {
       } = useForm()
 
       //form submit
-      const onFormSubmit = async(newEmpObj) => {
-        console.log(newEmpObj)
-        //make http post req to backend to save the new employee in db
-        try{
-          setLoading(true)
-          // let res=await fetch('http://localhost:6161/employee-api/employee', {
-          let res=await fetch(`${import.meta.env.VITE_API_URL}/employee-api/employee`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(newEmpObj)
-        });
-        if (res.ok) {
-           navigate('/list');
-        } else {
-  const text = await res.text();
+     const onFormSubmit = async (newEmpObj) => {
+  console.log("SENDING:", newEmpObj);
 
-  let message;
   try {
-    message = JSON.parse(text).reason;
-  } catch {
-    message = text || "Server error";
-  }
+    setLoading(true);
 
-  throw new Error(message);
-        }
-        console.log("STATUS:", res.status);
-        console.log("OK:", res.ok);
-        console.log("RESPONSE:", res);
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/employee-api/employee`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newEmpObj)
       }
-        catch(err){
-          setError(err.message)
-        }
-        finally{
-          setLoading(false)
-        }
-      }
+    );
+
+    console.log("STATUS:", res.status);
+    console.log("OK:", res.ok);
+
+    const text = await res.text();
+    console.log("RAW RESPONSE:", text);
+
+    if (res.ok) {
+      navigate("/list");
+    } else {
+      throw new Error(text || "Server error");
+    }
+
+  } catch (err) {
+    console.log("ERROR CAUGHT:", err);
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
       console.log(errors)
       if(loading){
         return <h1 className="text-3xl text-center">Loading...</h1>
