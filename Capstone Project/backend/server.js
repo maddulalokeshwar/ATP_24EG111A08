@@ -25,14 +25,25 @@ app.use("/admin-api", adminApp)
 app.use("/auth", commonApp)
 
 async function connectDB() {
-        await connect(process.env.DB_URL)
+  try {
+    console.log("DB URL:", process.env.DB_URL); // debug
 
-        console.log("Database connected")
+    if (!process.env.DB_URL) {
+      throw new Error("DB_URL missing in Render environment");
+    }
 
-        app.listen(port, () => {
-            console.log(`Server running on port ${port}`)
-        })
+    await connect(process.env.DB_URL);
 
+    console.log("Database connected");
+
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+
+  } catch (err) {
+    console.log("DB ERROR:", err.message);
+    process.exit(1);
+  }
 }
 
 connectDB()
