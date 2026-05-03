@@ -12,7 +12,7 @@ config()
 const app = exp()
 
 app.use(cors({
-  origin: ["http://localhost:5173"]
+  origin: "*"
 }))
 
 //cookie parser middleware
@@ -25,7 +25,7 @@ app.use("/employee-api", employeeApp)
 
 const connectDB = async()=>{
     try{
-        console.log(process.env.DB_URL)
+        
         await connect(process.env.DB_URL)
         console.log("DB connected successfully")
         //ASSIGN PORT 
@@ -37,6 +37,9 @@ const connectDB = async()=>{
 }
 connectDB()
 
+app.get("/", (req, res) => {
+  res.send("Server is running 🚀");
+});
 //to handle invalid path
 app.use((req, res, next) => {
     console.log(req.url)
