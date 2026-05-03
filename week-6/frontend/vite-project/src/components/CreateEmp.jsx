@@ -18,7 +18,7 @@ function CreateEmp() {
         //make http post req to backend to save the new employee in db
         try{
           setLoading(true)
-          let res=await fetch('http://localhost:6161/employee-api/employee', {
+          let res=await fetch(`${import.meta.env.VITE_API_URL}/employee-api/employee`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

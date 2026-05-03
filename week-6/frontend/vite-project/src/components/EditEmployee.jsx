@@ -20,21 +20,21 @@ function EditEmployee() {
     setValue("companyName", state.companyName)
   }, [state, setValue])
 
-  const saveModifiedEmployee=async(modifiedEmp)=>{
-    //console.log(modifiedEmp)
-    //make http put req
-    try{
-      let res=await axios.put(`http://localhost:6161/employee-api/employee/${state._id}`, modifiedEmp)
-      if(res.status === 200){
-        alert("Employee details updated successfully")
-        navigate("/list")
-      }
-    }
-    catch(err){
-      alert("Error in updating employee details")
-    }
+const saveModifiedEmployee = async (modifiedEmp) => {
+  try {
+    let res = await axios.put(
+      `${import.meta.env.VITE_API_URL}/employee-api/employee/${state._id}`,
+      modifiedEmp
+    );
 
+    if (res.status === 200) {
+      alert("Employee details updated successfully");
+      navigate("/list");
+    }
+  } catch (err) {
+    alert("Error in updating employee details");
   }
+};
 
 
   return ( 
