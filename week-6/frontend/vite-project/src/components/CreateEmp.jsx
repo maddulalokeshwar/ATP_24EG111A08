@@ -26,9 +26,9 @@ function CreateEmp() {
           },
           body: JSON.stringify(newEmpObj)
         });
-        if (res.status === 201) {
-  navigate('/list');
-} else {
+        if (res.ok) {
+           navigate('/list');
+        } else {
   const text = await res.text();
 
   let message;
@@ -39,7 +39,10 @@ function CreateEmp() {
   }
 
   throw new Error(message);
-}
+        }
+        console.log("STATUS:", res.status);
+        console.log("OK:", res.ok);
+        console.log("RESPONSE:", res);
       }
         catch(err){
           setError(err.message)
