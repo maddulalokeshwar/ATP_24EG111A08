@@ -24,7 +24,7 @@ function EditEmployee() {
     //console.log(modifiedEmp)
     //make http put req
     try{
-      let res=await axios.put(`${import.meta.env.VITE_URL}/employee-api/employee/${state._id}`, modifiedEmp)
+      let res=await axios.put(`${import.meta.env.VITE_API_URL}/employee-api/employee/${state._id}`, modifiedEmp)
       if(res.status === 200){
         alert("Employee details updated successfully")
         navigate("/list")
