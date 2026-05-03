@@ -14,9 +14,8 @@ import cors from "cors";
 const app = exp()
 const port = process.env.PORT || 4000
 app.use(cors({
-  origin: "mongodb+srv://lmaddula10_db_user:divya123R@blogappcluster.yzlktjw.mongodb.net/?appName=blogappcluster",
-  credentials: true
-}));
+  origin: "*"
+}))
 app.use(exp.json())
 app.use(cookieParser())
 app.use("/user-api", userApp)
