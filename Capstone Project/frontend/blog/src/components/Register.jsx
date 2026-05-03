@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-
+const API = import.meta.env.VITE_API_URL;
 function Register() {
   const {
     register,
@@ -42,7 +42,7 @@ function Register() {
     };
 
     const res = await axios.post(
-      "http://localhost:4000/auth/users",
+      `{API}/auth/users`,
       payload
     );
 

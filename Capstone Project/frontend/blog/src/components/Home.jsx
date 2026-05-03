@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+const API = import.meta.env.VITE_API_URL;
 function Home() {
   const [articles, setArticles] = useState([]);
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ function Home() {
     const fetchArticles = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/user-api/articles",
+          `{API}/user-api/articles`,
           { withCredentials: true }
         );
 

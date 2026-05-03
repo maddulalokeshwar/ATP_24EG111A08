@@ -12,7 +12,7 @@ import {
   submitBtn,
   errorClass,
 } from "../styles/common";
-
+const API = import.meta.env.VITE_API_URL;
 function EditArticle() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ function EditArticle() {
       };
 
       const res = await axios.put(
-        "http://localhost:4000/author-api/article",
+        `{API}/author-api/article`,
         payload,
         { withCredentials: true }
       );
