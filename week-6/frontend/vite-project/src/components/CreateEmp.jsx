@@ -14,7 +14,7 @@ function CreateEmp() {
 
       //form submit
      const onFormSubmit = async (newEmpObj) => {
-  console.log("SENDING:", newEmpObj);
+  console.log("📦 SENDING DATA:", newEmpObj);
 
   try {
     setLoading(true);
@@ -30,20 +30,20 @@ function CreateEmp() {
       }
     );
 
-    console.log("STATUS:", res.status);
-    console.log("OK:", res.ok);
+    console.log("📡 STATUS:", res.status);
+    console.log("📡 OK:", res.ok);
 
-    const text = await res.text();
-    console.log("RAW RESPONSE:", text);
+    const data = await res.text();
+    console.log("📄 RAW RESPONSE:", data);
 
-    if (res.ok) {
-      navigate("/list");
-    } else {
-      throw new Error(text || "Server error");
+    if (!res.ok) {
+      throw new Error(data || "Server error");
     }
 
+    navigate("/list");
+
   } catch (err) {
-    console.log("ERROR CAUGHT:", err);
+    console.log("💥 ERROR:", err);
     setError(err.message);
   } finally {
     setLoading(false);
