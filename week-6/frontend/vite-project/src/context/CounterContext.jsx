@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useCounterStore } from "../store/counterStore";
+import { useCounterStore } from "../store/CounterStore.js";
 
 // create context
 export const CounterContext = createContext();
