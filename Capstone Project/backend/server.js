@@ -27,7 +27,6 @@ app.get("/", (req, res) => {
 });
 async function connectDB() {
   try {
-    console.log("DB URL:", process.env.DB_URL); // debug
 
     if (!process.env.DB_URL) {
       throw new Error("DB_URL missing in Render environment");
