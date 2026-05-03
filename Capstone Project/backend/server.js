@@ -23,7 +23,9 @@ app.use("/user-api", userApp)
 app.use("/author-api", authorApp)
 app.use("/admin-api", adminApp)
 app.use("/auth", commonApp)
-
+app.get("/", (req, res) => {
+  res.send("🚀 Backend is running successfully");
+});
 async function connectDB() {
   try {
     console.log("DB URL:", process.env.DB_URL); // debug
