@@ -10,7 +10,7 @@ function Home() {
     const fetchArticles = async () => {
       try {
         const res = await axios.get(
-          `{API}/user-api/articles`,
+          `${API}/user-api/articles`,
           { withCredentials: true }
         );
 

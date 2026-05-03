@@ -3,13 +3,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/authStore";
 
+const API = import.meta.env.VITE_API_URL;
+
 function AdminProfile() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const logout = useAuth((state) => state.logout);
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/admin-api/users", {
+      const res = await axios.get(`${API}/admin-api/users`, {
         withCredentials: true,
       });
 
@@ -23,11 +26,10 @@ function AdminProfile() {
     fetchUsers();
   }, []);
 
-  //  BLOCK / ACTIVATE USER
   const toggleStatus = async (userId, currentStatus) => {
     try {
       await axios.put(
-        "http://localhost:4000/admin-api/user-status",
+        `${API}/admin-api/user-status`,
         {
           userId,
           isActive: !currentStatus,
@@ -35,21 +37,19 @@ function AdminProfile() {
         { withCredentials: true }
       );
 
-      fetchUsers(); // refresh list
+      fetchUsers();
     } catch (err) {
       console.log(err.response?.data || err.message);
     }
   };
 
-  //  LOGOUT
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:4000/auth/logout", {
+      await axios.get(`${API}/auth/logout`, {
         withCredentials: true,
       });
 
-      useAuth.setState({ currentUser: null, isAuthenticated: false });
-
+      await logout();
       navigate("/login");
     } catch (err) {
       console.log(err.response?.data || err.message);
@@ -58,8 +58,6 @@ function AdminProfile() {
 
   return (
     <div className="p-6">
-
-      {/* HEADER */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Admin Dashboard 👑</h2>
 
@@ -71,7 +69,6 @@ function AdminProfile() {
         </button>
       </div>
 
-      {/* USERS LIST */}
       {users.map((user) => (
         <div
           key={user._id}

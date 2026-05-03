@@ -42,7 +42,7 @@ function Register() {
     };
 
     const res = await axios.post(
-      `{API}/auth/users`,
+      `${API}/auth/users`,
       payload
     );
 

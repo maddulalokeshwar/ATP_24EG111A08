@@ -46,7 +46,7 @@ function EditArticle() {
       };
 
       const res = await axios.put(
-        `{API}/author-api/article`,
+        `${API}/author-api/article`,
         payload,
         { withCredentials: true }
       );
