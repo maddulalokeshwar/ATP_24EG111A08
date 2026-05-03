@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router"
 import { useContext } from "react";
 import { CounterContext } from "../context/CounterContext";
 

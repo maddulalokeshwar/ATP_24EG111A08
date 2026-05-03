@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form'
 import {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 
 function CreateEmp() {
   const [loading, setLoading] = useState(false)
@@ -18,7 +18,8 @@ function CreateEmp() {
         //make http post req to backend to save the new employee in db
         try{
           setLoading(true)
-          let res=await fetch(`${import.meta.env.VITE_API_URL}/employee-api/employee`, {
+          // let res=await fetch('http://localhost:6161/employee-api/employee', {
+          let res=await fetch(`${import.meta.env.VITE_URL}/employee-api/employee`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -71,3 +72,24 @@ function CreateEmp() {
 export default CreateEmp
 
 
+
+/*
+import {useForm} from 'react-hook-form'
+function CreateEmp() {
+  const {register, handleSubmit,formState:{errors}} = useForm()
+  return (
+    <div>
+      <h1 className='text-5xl text-center text-gray-300 '>Create New Employee</h1>
+      {/* Form }
+      <form className='w-full max-w-md mx-auto mt-7'>
+        <input type="text" placeholder='Enter name' {...register("name")} id=""  className='mb-3 border p-3 w-full rounded-2xl'/>
+         <input type="email" placeholder='Enter Email' {...register("email")} id=""  className='mb-3 border p-3 w-full rounded-2xl'/>
+          <input type="" placeholder='Enter Mobile No' {...register("mobile")} id=""  className='mb-3 border p-3 w-full rounded-2xl'/>
+           <input type="text" placeholder='Enter Company Name' {...register("name")} id=""  className='mb-3 border p-3 w-full rounded-2xl'/>
+      </form>
+    </div>
+  )
+}
+
+export default CreateEmp
+*/

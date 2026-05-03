@@ -15,6 +15,16 @@ function Home() {
   );
 }
 
-
+//   return (
+//     <div>
+//       <h1>Home</h1>
+//       {/* <p>Counter: {newCounter}</p>
+//       <button onClick={incrementCounter}>Increment</button>
+//       <button onClick={decrementCounter}>Decrement</button>
+//       <button onClick={resetCounter}>Reset</button> */}
+      
+//     </div>
+//   )
+// }
 
 export default Home

@@ -17,7 +17,7 @@ export const useCounterStore = create((set) => ({
     incrementCounter1: () => set((state) => ({ newCounter1: state.newCounter + 1 })),
     decrementCounter: () => set((state) => ({ newCounter: state.newCounter - 1 })),
     decrementCounter1: () => set((state) => ({ newCounter1: state.newCounter - 1 })),
-    resetCounter: () => set({ newCounter: 0 }),
+    reset: () => set({ newCounter: 0 }),
     //function to change newCounter to 500
     changeNewCounterTo500: () => set({ newCounter: 500 }),
     //function to decrement newCounter1 by 20

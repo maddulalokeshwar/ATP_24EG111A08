@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router"
 
 function ListOfEmps() {
   const [emps, setEmps] = useState([])
@@ -15,7 +15,7 @@ function ListOfEmps() {
   }
   useEffect(() => {
     async function getEmps(){
-      let res = await fetch(`${import.meta.env.VITE_API_URL}/employee-api/employee/${id}`,{ method: "DELETE" });
+      let res=await fetch(`${import.meta.env.VITE_URL}/employee-api/employee`)
       if(res.status === 200){
         let resObj = await res.json()
         setEmps(resObj.payload)
@@ -26,7 +26,7 @@ function ListOfEmps() {
 
   const deleteEmp = async (id) => {
   try {
-    let res = await fetch(`http://localhost:6161/employee-api/employee/${id}`, {
+    let res = await fetch(`${import.meta.env.VITE_URL}/employee-api/employee/${id}`, {
       method: "DELETE"
     });
 
