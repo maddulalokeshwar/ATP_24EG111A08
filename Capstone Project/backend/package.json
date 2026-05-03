@@ -4,7 +4,7 @@
   "description": "Backend of Blog application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -19,4 +19,5 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.3.0"
   }
+
 }

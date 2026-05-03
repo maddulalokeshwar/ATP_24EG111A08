@@ -14,7 +14,7 @@ import cors from "cors";
 const app = exp()
 const port = process.env.PORT || 4000
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "mongodb://lmaddula10_db_user:N98iqvDvvRmNnAEm@ac-adsxlr4-shard-00-00.yzlktjw.mongodb.net:27017,ac-adsxlr4-shard-00-01.yzlktjw.mongodb.net:27017,ac-adsxlr4-shard-00-02.yzlktjw.mongodb.net:27017/?ssl=true&replicaSet=atlas-b4xmpg-shard-0&authSource=admin&appName=blogappcluster",
   credentials: true
 }));
 app.use(exp.json())
