@@ -26,13 +26,20 @@ function CreateEmp() {
           },
           body: JSON.stringify(newEmpObj)
         });
-        if(res.status === 201){
-          navigate('/list')
-        }else{
-          let errorRes = await res.json()
-          console.log(errorRes)
-          throw new Error(errorRes.reason)
-        }
+        if (res.status === 201) {
+  navigate('/list');
+} else {
+  const text = await res.text();
+
+  let message;
+  try {
+    message = JSON.parse(text).reason;
+  } catch {
+    message = text || "Server error";
+  }
+
+  throw new Error(message);
+}
       }
         catch(err){
           setError(err.message)
