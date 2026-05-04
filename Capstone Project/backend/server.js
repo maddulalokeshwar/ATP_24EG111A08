@@ -20,7 +20,8 @@ app.use(
       "http://localhost:5173",
       "https://blog-frontend-21yf5d2h3-maddulalokeshwar5-9107s-projects.vercel.app",
       "https://blog-frontend-ikmnyuvzi-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-9v8y8751o-maddulalokeshwar5-9107s-projects.vercel.app"
+      "https://blog-frontend-9v8y8751o-maddulalokeshwar5-9107s-projects.vercel.app",
+      "https://blog-frontend-138i9ty3w-maddulalokeshwar5-9107s-projects.vercel.app"
     ],
     credentials: true
   })
