@@ -13,10 +13,18 @@ import cors from "cors";
 
 const app = exp()
 const port = process.env.PORT || 4000
-app.use(cors({
-  origin: "https://blog-frontend-ikmnyuvzi-maddulalokeshwar5-9107s-projects.vercel.app", // or your frontend URL
-  credentials: true
-}))
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://blog-frontend-21yf5d2h3-maddulalokeshwar5-9107s-projects.vercel.app",
+      "https://blog-frontend-ikmnyuvzi-maddulalokeshwar5-9107s-projects.vercel.app"
+    ],
+    credentials: true
+  })
+);
 app.use(exp.json())
 app.use(cookieParser())
 app.use("/user-api", userApp)
