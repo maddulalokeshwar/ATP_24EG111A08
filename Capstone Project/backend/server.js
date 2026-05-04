@@ -13,7 +13,6 @@ import cors from "cors";
 
 const app = exp()
 const port = process.env.PORT || 4000
-import cors from "cors";
 
 app.use(
   cors({
