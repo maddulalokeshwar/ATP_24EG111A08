@@ -12,7 +12,6 @@ export const commonApp = exp.Router()
 // Register
 commonApp.post('/users', async (req, res) => {
   try {
-    //  STEP 3 DEBUG LOG (ADD THIS)
     console.log("REGISTER BODY:", req.body);
 
     const userObj = req.body;
@@ -26,11 +25,15 @@ commonApp.post('/users', async (req, res) => {
     const newUserDoc = new userModel(userObj);
     await newUserDoc.save();
 
-    res.status(201).json({ message: "User created" });
+    console.log("USER SAVED:", newUserDoc._id);
+
+    res.status(201).json({
+      message: "User created successfully",
+      payload: newUserDoc
+    });
 
   } catch (err) {
-    console.log("FULL ERROR:", err);
-
+    console.log("REGISTER ERROR:", err);
     res.status(500).json({ message: err.message });
   }
 });

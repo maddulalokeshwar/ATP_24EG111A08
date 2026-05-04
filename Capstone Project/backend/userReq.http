@@ -5,7 +5,7 @@ Content-Type: application/json
 {
   "FirstName": "Hriday",
   "LastName": "Porika",
-  "email": "hriday@mail.com",
+  "email": "hridaywe@mail.com",
   "password": "@123456",
   "role": "AUTHOR",
   "profileImageUrl": "profilephoto.png",
