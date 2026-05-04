@@ -11,25 +11,29 @@ export const commonApp = exp.Router()
 
 // Register
 commonApp.post('/users', async (req, res) => {
-        const userObj = req.body
+  try {
+    //  STEP 3 DEBUG LOG (ADD THIS)
+    console.log("REGISTER BODY:", req.body);
 
-        if (userObj.role === "ADMIN") {
-            return res.status(400).json({message: "Registration failed as role is ADMIN"})
-        }
+    const userObj = req.body;
 
-        userObj.password = await hash(userObj.password, 12)
+    if (userObj.role === "ADMIN") {
+      return res.status(400).json({ message: "Registration failed as role is ADMIN" });
+    }
 
-        const newUserDoc = new userModel(userObj)
+    userObj.password = await hash(userObj.password, 12);
 
-        await newUserDoc.save()
+    const newUserDoc = new userModel(userObj);
+    await newUserDoc.save();
 
-        const userToSend = newUserDoc.toObject()
-        delete userToSend.password
-        res.status(201).json({
-            message: "User created",
-            payload: userToSend
-        })
-})
+    res.status(201).json({ message: "User created" });
+
+  } catch (err) {
+    console.log("FULL ERROR:", err);
+
+    res.status(500).json({ message: err.message });
+  }
+});
 //Route for login
 commonApp.post('/login',async(req,res)=>{
     //get user obj from body
