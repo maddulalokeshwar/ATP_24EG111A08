@@ -14,7 +14,8 @@ import cors from "cors";
 const app = exp()
 const port = process.env.PORT || 4000
 app.use(cors({
-  origin: "*"
+  origin: "https://blog-frontend-ikmnyuvzi-maddulalokeshwar5-9107s-projects.vercel.app", // or your frontend URL
+  credentials: true
 }))
 app.use(exp.json())
 app.use(cookieParser())
