@@ -7,32 +7,32 @@ export const useAuth = create((set) => ({
   isAuthenticated: false,
   error: null,
   login: async (userCred) => {
-    // const { role, ...userCredObj } = userCredWithRole;
-    try {
-      //set loading true
-      set({ loading: true, currentUser: null, isAuthenticated: false, error: null });
-      //make api call
-      let res = await axios.post(`${API}/auth/login`, userCred, { withCredentials: true });
-      //update state
-      if (res.status === 200) {
-        set({
-          currentUser: res.data?.payload,
-          loading: false,
-          isAuthenticated: true,
-          error: null,
-        });
-      }
-    } catch (err) {
-      console.log("err is ", err);
-      set({
-        loading: false,
-        isAuthenticated: false,
-        currentUser: null,
-        //error: err,
-        error: err.response?.data?.error || "Login failed",
-      });
-    }
-  },
+  try {
+    set({ loading: true, error: null });
+
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/auth/login`,
+      userCred,
+      { withCredentials: true }
+    );
+
+    set({
+      currentUser: res.data.user,
+      isAuthenticated: true,
+      loading: false,
+    });
+
+    return res.data;
+  } catch (err) {
+    set({
+      error: err.response?.data?.message || "Login failed",
+      loading: false,
+      isAuthenticated: false,
+    });
+
+    throw err;
+  }
+},
   logout: async () => {
     try {
       //set loading state

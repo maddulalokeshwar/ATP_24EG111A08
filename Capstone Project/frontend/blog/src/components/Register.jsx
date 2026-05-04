@@ -32,14 +32,14 @@ function Register() {
     setLoading(true);
 
     const payload = {
-      FirstName: userObj.firstName,
-      LastName: userObj.lastName,
-      email: userObj.email,
-      password: userObj.password,
-      role: userObj.role,
-      profileImageUrl: "",
-      isUserActive: true,
-    };
+  FirstName: userObj.firstName,
+  LastName: userObj.lastName,
+  email: userObj.email,
+  password: userObj.password,
+  role: userObj.role,
+  profileImageUrl: "",
+  isUserActive: true,
+};
 
     const res = await axios.post(
       `${API}/auth/users`,

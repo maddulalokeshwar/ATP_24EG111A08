@@ -28,29 +28,27 @@ function Login() {
   //get state from auth store
   const { login, currentUser, loading, error, isAuthenticated } = useAuth((state) => state);
   //on user login
-  const onUserLogin = (userCredObj) => {
-    //call login() of auth store
-    login(userCredObj);
-  };
+  const onUserLogin = async (userCredObj) => {
+  try {
+    await login(userCredObj);
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Invalid credentials");
+  }
+};
 
   useEffect(() => {
-    //navigation logic
-    if (isAuthenticated === true) {
-      if (currentUser.role === "USER") {
-        //show cuccess toast
-        toast.success("Login success and redirecting to User Profile",{duration:2000})
-        navigate("/user-profile");
-      }
-      if (currentUser.role === "AUTHOR") {
-         toast.success("Login success and redirecting to Author Profile",{duration:2000})
-        navigate("/author-profile");
-      }
-      if (currentUser.role === "ADMIN") {
-         toast.success("Login success and redirecting to Admin Profile",{duration:2000})
-        navigate("/admin-profile");
-      }
-    }
-  }, [isAuthenticated]);
+  if (!isAuthenticated || !currentUser) return;
+
+  toast.success("Login success");
+
+  if (currentUser.role === "USER") {
+    navigate("/user-profile");
+  } else if (currentUser.role === "AUTHOR") {
+    navigate("/author-profile");
+  } else if (currentUser.role === "ADMIN") {
+    navigate("/admin-profile");
+  }
+}, [isAuthenticated, currentUser, navigate]);
 
   //deal with loading
   if (loading) {

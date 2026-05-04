@@ -1,24 +1,17 @@
 import { useAuth } from "../store/authStore";
 import { Navigate } from "react-router-dom";
-import {toast} from "react-hot-toast";
 
 function ProtectedRoute({ children, allowedRoles }) {
-  //get user login status from store
-  const { loading, currentUser, isAuthenticated} = useAuth();
-  //loading state
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-  //if user not loggedin
-  if (!isAuthenticated) {
-  return <Navigate to="/login" replace />;
-}
+  const { loading, currentUser, isAuthenticated } = useAuth();
 
-  //check roles
-  if (allowedRoles && !allowedRoles.includes(currentUser?.role)) {
-   
-    //redirect to Login
-    return <Navigate to="/unauthorized" replace state={{ redirectTo: "/" }} />;
+  if (loading) return <p>Loading...</p>;
+
+  if (!isAuthenticated || !currentUser) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (allowedRoles && !allowedRoles.includes(currentUser.role)) {
+    return <Navigate to="/unauthorized" replace />;
   }
 
   return children;

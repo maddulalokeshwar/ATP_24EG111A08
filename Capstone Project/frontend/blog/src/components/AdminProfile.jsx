@@ -29,13 +29,13 @@ function AdminProfile() {
   const toggleStatus = async (userId, currentStatus) => {
     try {
       await axios.put(
-        `${API}/admin-api/user-status`,
-        {
-          userId,
-          isActive: !currentStatus,
-        },
-        { withCredentials: true }
-      );
+  `${API}/admin-api/user-status`,
+  {
+    userId,
+    isUserActive: !currentStatus,
+  },
+  { withCredentials: true }
+);
 
       fetchUsers();
     } catch (err) {
@@ -76,7 +76,7 @@ function AdminProfile() {
         >
           <div>
             <p className="font-semibold">
-              {user.FirstName} {user.LastName}
+              {user.firstName || user.FirstName} {user.lastName || user.LastName}
             </p>
             <p className="text-sm text-gray-500">{user.email}</p>
             <p className="text-sm">Role: {user.role}</p>
