@@ -81,8 +81,8 @@ commonApp.post("/login", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false
+      sameSite: "none",
+      secure: true
     });
 
     const userObj = user.toObject();
@@ -133,3 +133,10 @@ commonApp.put('/password',verifyToken("AUTHOR","ADMIN","USER"),async(req,res)=>{
     //return res
     res.status(200).json({message:"Password updated successfully",payload:userDoc})
 })
+
+commonApp.get("/check-auth", verifyToken("USER","AUTHOR","ADMIN"), (req, res) => {
+  res.status(200).json({
+    message: "User authenticated",
+    payload: req.user
+  });
+});
