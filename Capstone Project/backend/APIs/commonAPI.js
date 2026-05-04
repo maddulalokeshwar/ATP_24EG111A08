@@ -23,7 +23,12 @@ commonApp.post('/users', async (req, res) => {
 
         await newUserDoc.save()
 
-        res.status(201).json({ message: "User created" })
+        const userToSend = newUserDoc.toObject()
+        delete userToSend.password
+        res.status(201).json({
+            message: "User created",
+            payload: userToSend
+        })
 })
 //Route for login
 commonApp.post('/login',async(req,res)=>{
