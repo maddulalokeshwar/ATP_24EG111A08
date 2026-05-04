@@ -15,6 +15,7 @@ export const useAuth = create((set) => ({
       userCred,
       { withCredentials: true }
     );
+    console.log("LOGIN RESPONSE:", res.data);
 
     set({
       currentUser: res.data.user,
