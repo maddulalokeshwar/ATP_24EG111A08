@@ -38,36 +38,68 @@ commonApp.post('/users', async (req, res) => {
   }
 });
 //Route for login
-commonApp.post('/login',async(req,res)=>{
-    //get user obj from body
-    const {email,password}=req.body;
-    //find user by email
-    const user=await userModel.findOne({email:email});
-    //if user not found
-    if(!user)
-        return res.status(400).json({message:"Login failed ,please check email and try again"})
-    //check if the user is blocked or not
-    if(user.isUserActive === false)
-        return res.status(403).json({message:"Your account is blocked"})
-    //compare pass
-    const isMatched=await compare(password,user.password)
-    //if password not matched
-    if(!isMatched)
-        return res.status(400).json({message:"Login failed ,please check password and try again"})
-    //generate jwt token
-    const signedToken=sign({id:user._id,email:email,role:user.role},process.env.SECRET_KEY,{expiresIn:"1h"})
+commonApp.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-    //set token to res header
-    res.cookie("token",signedToken,{
-        httpOnly:true,
-        sameSite:"lax",//lax stands for relaxed restrictions
-        secure:false
-    })
-    let userObj=user.toObject()
-    delete userObj.password
-    res.status(200).json({message:"Login successfull",payload:userObj})
-    
-})
+    const user = await userModel.findOne({ email });
+
+    //user not found
+    if (!user) {
+      return res.status(400).json({
+        message: "Invalid email or password"
+      });
+    }
+
+    // block check
+    if (user.isUserActive === false) {
+      return res.status(403).json({
+        message: "Your account is blocked"
+      });
+    }
+
+    //password safety check
+    if (!user.password) {
+      return res.status(500).json({
+        message: "User password missing in DB"
+      });
+    }
+
+    const isMatched = await compare(password, user.password);
+
+    if (!isMatched) {
+      return res.status(400).json({
+        message: "Invalid email or password"
+      });
+    }
+
+    const token = sign(
+      { id: user._id, email: user.email, role: user.role },
+      process.env.SECRET_KEY,
+      { expiresIn: "1h" }
+    );
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false
+    });
+
+    const userObj = user.toObject();
+    delete userObj.password;
+
+    res.status(200).json({
+      message: "Login successful",
+      payload: userObj
+    });
+
+  } catch (err) {
+    console.log("LOGIN ERROR:", err);
+    res.status(500).json({
+      message: err.message
+    });
+  }
+});
 //Route for logout
 commonApp.get('/logout',async(req,res)=>{
     // const authorid=req.user?.id;
