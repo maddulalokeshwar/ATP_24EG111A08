@@ -15,15 +15,16 @@ export const useAuth = create((set) => ({
       userCred,
       { withCredentials: true }
     );
+
     console.log("LOGIN RESPONSE:", res.data);
 
     set({
-      currentUser: res.data.user,
+      currentUser: res.data.payload, // ✅ FIXED
       isAuthenticated: true,
       loading: false,
     });
 
-    return res.data;
+    return res.data.payload;
   } catch (err) {
     set({
       error: err.response?.data?.message || "Login failed",

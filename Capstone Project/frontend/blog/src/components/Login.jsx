@@ -30,7 +30,12 @@ function Login() {
   //on user login
   const onUserLogin = async (userCredObj) => {
   try {
-    await login(userCredObj);
+    const user = await login(userCredObj);
+
+    if (user?.role === "USER") navigate("/user-profile");
+    if (user?.role === "AUTHOR") navigate("/author-profile");
+    if (user?.role === "ADMIN") navigate("/admin-profile");
+
   } catch (err) {
     toast.error(err.response?.data?.message || "Invalid credentials");
   }
