@@ -1,3 +1,4 @@
+// File: week-6/backend/APIs/EmployeeAPI.js | Description: Employee API
 import exp from "express"
 import {EmployeeModel} from "../models/EmployeeModel.js"
 import {config} from "dotenv"

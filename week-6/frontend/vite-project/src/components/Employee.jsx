@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/components/Employee.jsx | Description: Employee
 import {useLocation} from "react-router"
 
 function Employee() {

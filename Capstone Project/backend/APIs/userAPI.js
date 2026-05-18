@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/APIs/userAPI.js | Description: user API
 import exp from 'express'
 import {articleModel} from '../models/articleModel.js'
 import {verifyToken} from '../middleware/verifyToken.js'
@@ -35,7 +36,6 @@ userApp.put('/articles', verifyToken("USER"), async (req, res) => {
 
     await articleDocument.save();
 
-    // 🔥 IMPORTANT: return populated version
     const updatedArticle = await articleModel
       .findById(articleId)
       .populate("comments.user", "FirstName LastName");

@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/middleware/verifyToken.js | Description: verify Token
 import jwt from 'jsonwebtoken'
 const {verify}=jwt
 import {config} from 'dotenv'

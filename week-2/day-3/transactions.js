@@ -1,3 +1,4 @@
+// File: week-2/day-3/transactions.js | Description: transactions
 const transactions = [
   { id: 1, type: "credit", amount: 5000 },
   { id: 2, type: "debit", amount: 2000 },

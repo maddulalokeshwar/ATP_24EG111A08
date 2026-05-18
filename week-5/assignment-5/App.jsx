@@ -1,3 +1,4 @@
+// File: week-5/assignment-5/App.jsx | Description: App
 import './App.css';
 import User from '../components/User.jsx'
 import NavBar from '../components/Navbar.jsx'

@@ -1,3 +1,4 @@
+// File: week-2/day-3/TaskManagerSystem/validator.js | Description: validator
 function validateTitle(title) {
     if (title.length >= 3)
         return true

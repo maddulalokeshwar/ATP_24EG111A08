@@ -1,3 +1,4 @@
+// File: week-2/day-3/e-Commerce/payment.js | Description: payment
 import { reduceStock } from './product.js';
 import { getCartItems, getCartTotal, clearCart } from './cart.js';
 import { applyDiscount } from './discount.js';

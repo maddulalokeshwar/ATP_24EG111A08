@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/App.jsx | Description: App
 import { createBrowserRouter, RouterProvider } from "react-router";
 import RootLayout from "./components/RootLayout";
 import Home from "./components/Home";

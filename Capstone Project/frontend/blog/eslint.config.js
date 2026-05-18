@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/eslint.config.js | Description: eslint.config
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'

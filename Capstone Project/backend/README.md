@@ -1,23 +1,40 @@
-1.Generate a json package
-2.Create a .env file
-3.Create express app & assign the port number 
-4.Connect to the db
-5.Define schemas and create Models  
-    -UserType Schema
-        FirstName
-        LastName
-        email(unique)
-        password
-        role
-        profileImageUrl
-        isUserActive
-6.Implemement API's
-7.Create common API's for register,login and logout
+﻿# Capstone Project Backend
 
+This folder contains the backend API server for the Capstone blog application.
 
-Cross-Site Request Forgery
+## Setup
 
+1. Generate a `package.json` file
+2. Create a `.env` file for configuration
+3. Create the Express app and assign the port number
+4. Connect to the database
 
+## Data model
 
-As we have planned to on;y give login option to the admin rather than giving him regestration and then login.
-To achieve this we need to do data seeding i.e we need to add data manually .
+The backend defines schemas and models, including a `UserType` schema with fields such as:
+
+- `firstName`
+- `lastName`
+- `email` (unique)
+- `password`
+- `role`
+- `profileImageUrl`
+- `isUserActive`
+
+## APIs
+
+- Implement route handlers for articles, authors, admins, and common user operations
+- Create common APIs for registration, login, and logout
+
+## Admin login approach
+
+The current design gives only the admin a login option rather than registration plus login. To support this, admin user data must be seeded manually into the database.
+
+## Contents
+
+- `server.js` — Express server entry point
+- `APIs/` — route handlers for users, authors, admins, and common operations
+- `middleware/` — authentication and token verification
+- `models/` — Mongoose schemas and data models
+- `.env` — environment configuration file
+- `*.http` — HTTP request templates for API testing

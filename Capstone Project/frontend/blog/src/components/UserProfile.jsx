@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/UserProfile.jsx | Description: User Profile
 import { useAuth } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 

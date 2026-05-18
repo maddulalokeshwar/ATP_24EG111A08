@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/APIs/commonAPI.js | Description: common API
 import exp from 'express'
 import { userModel } from '../models/usermodel.js'
 import { hash,compare} from 'bcryptjs'

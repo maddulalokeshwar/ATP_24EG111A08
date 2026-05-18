@@ -1,3 +1,4 @@
+// File: week-1/day-1/sum_of_marks_in_array.js | Description: sum of marks in array
 //3.Sum of marks [90,78,65,98]
 marks=[90,78,65,98]
 let sum1=0

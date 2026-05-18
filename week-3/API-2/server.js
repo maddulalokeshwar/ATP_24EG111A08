@@ -1,3 +1,4 @@
+// File: week-3/API-2/server.js | Description: server
 import exp from 'express'
 import cookieParser from 'cookie-parser'
 import {connect} from 'mongoose'

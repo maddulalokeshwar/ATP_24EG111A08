@@ -1,3 +1,4 @@
+// File: week-2/day-3/e-Commerce/discount.js | Description: discount
 const coupons = {
     WELCOME10: { type: 'percentage', value: 10, minAmount: 1000 },
     FLAT500: { type: 'flat', value: 500, minAmount: 5000 },

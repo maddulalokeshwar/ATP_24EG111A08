@@ -1,3 +1,4 @@
+// File: week-6/backend/models/EmployeeModel.js | Description: Employee Model
 import {Schema, model} from "mongoose"
 
 const employeeSchema = new Schema({

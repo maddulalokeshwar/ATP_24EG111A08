@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/Register.jsx | Description: Register
 import {
   divider,
   errorClass,

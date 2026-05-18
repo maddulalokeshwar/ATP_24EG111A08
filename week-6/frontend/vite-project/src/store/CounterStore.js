@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/store/CounterStore.js | Description: Counter Store
 import {create} from "zustand";
 
 export const useCounterStore = create((set) => ({

@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/models/articleModel.js | Description: article Model
 import {Schema,model,Types} from 'mongoose';
 
 const commentSchema=new Schema({

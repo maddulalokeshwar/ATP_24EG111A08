@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/Header.jsx | Description: Header
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../store/authStore";
 import {

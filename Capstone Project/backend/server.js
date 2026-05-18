@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/server.js | Description: server
 import exp from 'express'
 import { config } from 'dotenv'
 import { connect } from 'mongoose'

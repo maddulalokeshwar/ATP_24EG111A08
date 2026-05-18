@@ -1,3 +1,4 @@
+// File: week-5/assignment-4/components/Product.jsx | Description: Product
 function Product(props){
     const { productObj } = props;
 

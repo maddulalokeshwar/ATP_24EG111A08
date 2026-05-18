@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/ProtectedRoute.jsx | Description: Protected Route
 import { useAuth } from "../store/authStore";
 import { Navigate } from "react-router-dom";
 

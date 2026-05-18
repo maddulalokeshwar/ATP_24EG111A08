@@ -1,3 +1,4 @@
+// File: week-2/day-3/ShoppingCartSummary.js | Description: Shopping Cart Summary
 const cart = [
   { id: 101, name: "Laptop", price: 60000, quantity: 1, inStock: true },
   { id: 102, name: "Mouse", price: 800, quantity: 2, inStock: true },

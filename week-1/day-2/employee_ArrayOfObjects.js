@@ -1,3 +1,5 @@
+// File: week-1/day-2/employee_ArrayOfObjects.js | Description: employee Array Of Objects
+//employee data
 const employees = [
   {
     eno: 101,

@@ -1,3 +1,4 @@
+// File: week-2/day-3/e-Commerce/app.js | Description: app
 import {
     getAllProducts,
     searchProducts

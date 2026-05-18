@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/ArticleByID.jsx | Description: Article By ID
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";

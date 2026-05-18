@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/Home.jsx | Description: Home
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

@@ -1,3 +1,4 @@
+// File: week-3/API-2/APIs/ProductAPI.js | Description: Product API
 import exp from 'express';
 import { productModel } from '../models/ProductModel.js'
 import {verifyToken} from '../middlewares/verifyToken.js'

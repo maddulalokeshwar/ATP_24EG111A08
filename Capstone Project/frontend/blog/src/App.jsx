@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/App.jsx | Description: App
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./components/RootLayout";
 import Home from "./components/Home";

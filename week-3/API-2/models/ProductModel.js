@@ -1,3 +1,4 @@
+// File: week-3/API-2/models/ProductModel.js | Description: Product Model
 /*Product document structure
      a.productId (required)
      b.productName(required)

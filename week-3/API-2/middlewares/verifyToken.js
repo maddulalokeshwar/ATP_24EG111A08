@@ -1,3 +1,4 @@
+// File: week-3/API-2/middlewares/verifyToken.js | Description: verify Token
 import jwt, { decode } from 'jsonwebtoken'
 const {verify}=jwt
 export function verifyToken(req,res,next){

@@ -1,3 +1,4 @@
+// File: week-5/assignment-4/App.jsx | Description: App
 import './App.css'
 import Product from './components/Product.jsx';
 //Component can be created in 2 ways function and class component

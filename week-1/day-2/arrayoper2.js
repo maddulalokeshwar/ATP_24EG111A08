@@ -1,3 +1,4 @@
+// File: week-1/day-2/arrayoper2.js | Description: arrayoper2
 const courses = ["javascript", "react", "node", "mongodb", "express"];
 /* Tasks:
     1. filter() courses with name length > 5

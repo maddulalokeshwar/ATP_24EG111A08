@@ -1,3 +1,4 @@
+// File: week-1/day-2/arrayoper3.js | Description: arrayoper3
 const marks = [78, 92, 35, 88, 40, 67];
 /* 
 Tasks:

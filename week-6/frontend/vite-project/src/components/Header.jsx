@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/components/Header.jsx | Description: Header
 import { NavLink } from "react-router"
 import { useContext } from "react";
 import { CounterContext } from "../context/CounterContext";

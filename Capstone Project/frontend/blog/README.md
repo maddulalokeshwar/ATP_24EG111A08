@@ -1,16 +1,27 @@
-# React + Vite
+# Capstone Blog Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This folder contains the React/Tailwind frontend for the Capstone blog application.
 
-Currently, two official plugins are available:
+What the app includes
+- `src/main.jsx` — entry point for the React application
+- `src/App.jsx` — root component and client-side routing setup
+- `src/components/` — page components such as `Home`, `Login`, `Register`, `UserProfile`, `AuthorArticles`, `WriteArticles`, `EditArticle`, `AdminProfile`, and `ProtectedRoute`
+- `src/store/authStore.js` — authentication state management and login logic
+- `src/styles/common.js` — shared style utilities and color tokens
+- `src/index.css` — global CSS styles
+- `tailwind.config.js` — Tailwind CSS configuration
+- `vercel.json` — deployment settings
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+What the app does
+- displays a list of blog articles on the home page
+- supports user registration and login
+- protects routes with role-based access
+- allows authors to create and edit articles
+- provides admin pages for managing users and articles
 
-## React Compiler
+How to run
+1. `cd "Capstone Project/frontend/blog"`
+2. `npm install`
+3. `npm run dev`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This frontend connects to the backend API in `Capstone Project/backend` for authentication, article management, and authorization.

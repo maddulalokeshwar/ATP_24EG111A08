@@ -1,3 +1,4 @@
+### File: week-3/API-2/req.http | Description: req
 ###Read all users(request to a protected route)
 GET http://localhost:4000/user-api/users
 Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxva2lAZ21haWwuY29tIiwiaWF0IjoxNzcyODc3MjY4LCJleHAiOjE3NzI4NzcyODh9._oc6ayi7lhoXox0CqlRJPc-8hfuMy-g27MAm-3cT_KE; Path=/; HttpOnly; SameSite=Lax

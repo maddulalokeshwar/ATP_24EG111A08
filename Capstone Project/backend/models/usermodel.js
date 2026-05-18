@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/models/usermodel.js | Description: usermodel
 import {Schema,model} from 'mongoose'
 import { profile, timeStamp } from 'node:console'
 

@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/Login.jsx | Description: Login
 import { useForm } from "react-hook-form";
 import {
   pageBackground,

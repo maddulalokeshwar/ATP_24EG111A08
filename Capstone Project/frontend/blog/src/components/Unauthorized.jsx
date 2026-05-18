@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/Unauthorized.jsx | Description: Unauthorized
 
 
 import { useEffect } from "react";

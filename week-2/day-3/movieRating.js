@@ -1,3 +1,4 @@
+// File: week-2/day-3/movieRating.js | Description: movie Rating
 const movies = [
   { id: 1, title: "Inception", genre: "Sci-Fi", rating: 8.8 },
   { id: 2, title: "Joker", genre: "Drama", rating: 8.4 },

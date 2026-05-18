@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/components/RootLayout.jsx | Description: Root Layout
 import Header from "./Header"
 import {Outlet} from "react-router"
 

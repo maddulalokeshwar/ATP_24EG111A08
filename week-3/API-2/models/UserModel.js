@@ -1,3 +1,4 @@
+// File: week-3/API-2/models/UserModel.js | Description: User Model
 //Create User Schema 
 import {Schema ,model} from "mongoose";
 

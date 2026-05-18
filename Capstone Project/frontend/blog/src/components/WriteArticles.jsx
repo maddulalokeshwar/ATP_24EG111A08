@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/WriteArticles.jsx | Description: Write Articles
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";

@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/components/Home.jsx | Description: Home
 import { useContext } from "react";
 import { CounterContext } from "../context/CounterContext";
 

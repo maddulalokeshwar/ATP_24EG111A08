@@ -1,3 +1,4 @@
+// File: week-2/day-3/studentMarks.js | Description: student Marks
 const students = [
   { id: 1, name: "Ravi", marks: 78 },
   { id: 2, name: "Anjali", marks: 92 },

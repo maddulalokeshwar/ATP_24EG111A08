@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/store/authStore.js | Description: auth Store
 import { create } from "zustand";
 import axios from "axios";
 const API = import.meta.env.VITE_API_URL;

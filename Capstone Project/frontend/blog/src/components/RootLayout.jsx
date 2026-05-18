@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/RootLayout.jsx | Description: Root Layout
 import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";

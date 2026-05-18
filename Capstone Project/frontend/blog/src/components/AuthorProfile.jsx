@@ -1,3 +1,4 @@
+// File: Capstone Project/frontend/blog/src/components/AuthorProfile.jsx | Description: Author Profile
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/authStore";
 

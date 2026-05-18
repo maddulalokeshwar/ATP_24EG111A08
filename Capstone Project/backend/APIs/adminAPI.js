@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/APIs/adminAPI.js | Description: admin API
 import exp from 'express'
 import { userModel } from '../models/usermodel.js'
 import { verifyToken } from '../middleware/verifyToken.js'

@@ -1,3 +1,4 @@
+// File: Capstone Project/backend/APIs/authorAPI.js | Description: author API
 import exp from 'express'
 import {userModel} from '../models/usermodel.js'
 import {articleModel} from '../models/articleModel.js'

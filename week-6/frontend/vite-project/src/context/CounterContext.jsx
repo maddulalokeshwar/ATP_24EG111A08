@@ -1,3 +1,4 @@
+// File: week-6/frontend/vite-project/src/context/CounterContext.jsx | Description: Counter Context
 import { createContext } from "react";
 import { useCounterStore } from "../store/CounterStore.js";
 
