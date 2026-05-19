@@ -1,22 +1,24 @@
-// File: Capstone Project/frontend/blog/src/components/Home.jsx | Description: Home
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../store/authStore";
+
 const API = import.meta.env.VITE_API_URL;
+
 function Home() {
   const [articles, setArticles] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await axios.get(
-          `${API}/user-api/articles`,
-          { withCredentials: true }
-        );
-
+        // No credentials needed — endpoint is now public
+        const res = await axios.get(`${API}/user-api/articles`);
         setArticles(res.data.payload);
       } catch (err) {
+        setError("Failed to load articles. Please try again later.");
         console.log(err.response?.data || err.message);
       }
     };
@@ -26,7 +28,29 @@ function Home() {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Latest Articles 📰</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold">Latest Articles 📰</h1>
+
+        {/* Prompt guests to log in; hidden if already authenticated */}
+        {!isAuthenticated && (
+          <p className="text-sm text-gray-500">
+            <Link to="/login" className="text-blue-600 underline">
+              Log in
+            </Link>{" "}
+            or{" "}
+            <Link to="/register" className="text-blue-600 underline">
+              Register
+            </Link>{" "}
+            to comment on articles.
+          </p>
+        )}
+      </div>
+
+      {error && <p className="text-red-500 mb-4">{error}</p>}
+
+      {articles.length === 0 && !error && (
+        <p className="text-gray-400">No articles yet. Check back soon!</p>
+      )}
 
       {articles.map((a) => (
         <div

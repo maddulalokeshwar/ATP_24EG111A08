@@ -20,7 +20,7 @@ export const useAuth = create((set) => ({
     console.log("LOGIN RESPONSE:", res.data);
 
     set({
-      currentUser: res.data.payload, // ✅ FIXED
+      currentUser: res.data.payload,
       isAuthenticated: true,
       loading: false,
     });

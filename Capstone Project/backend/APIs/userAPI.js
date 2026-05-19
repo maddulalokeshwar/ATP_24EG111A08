@@ -5,7 +5,7 @@ import {verifyToken} from '../middleware/verifyToken.js'
 export const userApp=exp.Router()
 
 //View article of all authors
-userApp.get('/articles', verifyToken("USER"), async (req, res) => {
+userApp.get('/articles', async (req, res) => {
     const articlesList = await articleModel
       .find({ isArticleActive: true })
       .populate("comments.user", "FirstName LastName");

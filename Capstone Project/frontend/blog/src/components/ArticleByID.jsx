@@ -1,5 +1,4 @@
-// File: Capstone Project/frontend/blog/src/components/ArticleByID.jsx | Description: Article By ID
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../store/authStore";
@@ -39,6 +38,7 @@ function ArticleByID() {
   const { register, handleSubmit } = useForm();
 
   const user = useAuth((state) => state.currentUser);
+  const isAuthenticated = useAuth((state) => state.isAuthenticated);
 
   const [article, setArticle] = useState(location.state || null);
   const [loading, setLoading] = useState(false);
@@ -50,14 +50,11 @@ function ArticleByID() {
     const getArticle = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(
-          `${API}/user-api/article/${id}`,
-          { withCredentials: true }
-        );
-
+        // No credentials needed — public endpoint
+        const res = await axios.get(`${API}/user-api/article/${id}`);
         setArticle(res.data.payload);
       } catch (err) {
-        setError(err.response?.data?.error);
+        setError(err.response?.data?.error || "Failed to load article.");
       } finally {
         setLoading(false);
       }
@@ -138,6 +135,7 @@ function ArticleByID() {
 
       <div className={articleContent}>{article.content}</div>
 
+      {/* Author controls */}
       {user?.role === "AUTHOR" && (
         <div className={articleActions}>
           <button className={editBtn} onClick={() => editArticle(article)}>
@@ -150,6 +148,7 @@ function ArticleByID() {
         </div>
       )}
 
+      {/* Comment form — only for logged-in USERs */}
       {user?.role === "USER" && (
         <div className={articleActions}>
           <form onSubmit={handleSubmit(addComment)}>
@@ -166,6 +165,21 @@ function ArticleByID() {
         </div>
       )}
 
+      {/* Prompt guests to log in to comment */}
+      {!isAuthenticated && (
+        <div className="mt-6 p-4 border rounded-xl text-center text-gray-500">
+          <Link to="/login" className="text-blue-600 underline">
+            Log in
+          </Link>{" "}
+          or{" "}
+          <Link to="/register" className="text-blue-600 underline">
+            Register
+          </Link>{" "}
+          to leave a comment.
+        </div>
+      )}
+
+      {/* Comments list */}
       <div className={commentsWrapper}>
         {article.comments?.length === 0 && (
           <p className="text-[#a1a1a6] text-sm text-center">
