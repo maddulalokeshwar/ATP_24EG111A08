@@ -25,20 +25,16 @@ function AuthorArticles() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log("user in author profile", user);
-
   useEffect(() => {
     if (!user) return;
 
     const getAuthorArticles = async () => {
       try {
         setLoading(true);
-        //read articles of current author
         let res = await axios.get(`${API}/author-api/articles`, { withCredentials: true });
         if (res.status === 200) {
           setArticles(res.data.payload);
         }
-        //update articles state
       } catch (err) {
         console.log(err);
         setError(err.response?.data?.error || "Failed to fetch articles");
@@ -56,11 +52,45 @@ function AuthorArticles() {
     });
   };
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleString("en-IN", {
-      timeZone: "Asia/Kolkata",
-      dateStyle: "medium",
-    });
+  // Soft-delete the article
+  const deleteArticle = async (article) => {
+    try {
+      const res = await axios.put(
+        `${API}/author-api/article`,
+        { articleId: article._id, isArticleActive: false },
+        { withCredentials: true }
+      );
+      if (res.status === 200) {
+        // Update UI instantly without refetching
+        setArticles((prev) =>
+          prev.map((a) =>
+            a._id === article._id ? { ...a, isArticleActive: false } : a
+          )
+        );
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to delete article");
+    }
+  };
+
+  // Restore a deleted article
+  const restoreArticle = async (article) => {
+    try {
+      const res = await axios.put(
+        `${API}/author-api/article`,
+        { articleId: article._id, isArticleActive: true },
+        { withCredentials: true }
+      );
+      if (res.status === 200) {
+        setArticles((prev) =>
+          prev.map((a) =>
+            a._id === article._id ? { ...a, isArticleActive: true } : a
+          )
+        );
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to restore article");
+    }
   };
 
   if (loading) return <p className={loadingClass}>Loading articles...</p>;
@@ -81,15 +111,32 @@ function AuthorArticles() {
 
           <div className="flex flex-col gap-2">
             <p className={articleMeta}>{article.category}</p>
-
             <p className={articleTitle}>{article.title}</p>
-
             <p className={articleExcerpt}>{article.content.slice(0, 60)}...</p>
           </div>
 
-          <button className={`${ghostBtn} mt-auto pt-4`} onClick={() => openArticle(article)}>
-            Read Article →
-          </button>
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-2 mt-auto pt-4">
+            <button className={`${ghostBtn}`} onClick={() => openArticle(article)}>
+              Read Article →
+            </button>
+
+            {article.isArticleActive ? (
+              <button
+                className="px-4 py-2 text-sm text-red-500 border border-red-400 rounded-full hover:bg-red-500 hover:text-white transition"
+                onClick={() => deleteArticle(article)}
+              >
+                Delete Article
+              </button>
+            ) : (
+              <button
+                className="px-4 py-2 text-sm text-green-600 border border-green-500 rounded-full hover:bg-green-500 hover:text-white transition"
+                onClick={() => restoreArticle(article)}
+              >
+                Restore Article
+              </button>
+            )}
+          </div>
         </div>
       ))}
     </div>
