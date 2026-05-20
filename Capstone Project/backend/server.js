@@ -17,16 +17,18 @@ const port = process.env.PORT || 4000
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://blog-frontend-mcbpphvtj-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-138i9ty3w-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-pctmvzce0-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-hqaa1w1td-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-6m6bx9sga-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-d950qsv2a-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-ten-xi.vercel.app"
-    ],
+    origin: function(origin, callback) {
+      if (!origin) return callback(null, true);
+      
+      if (
+        origin.startsWith("http://localhost") ||
+        origin.includes("blog-frontend") && origin.endsWith(".vercel.app")
+      ) {
+        return callback(null, true);
+      }
+      
+      callback(new Error("Not allowed by CORS"));
+    },
     credentials: true
   })
 );
