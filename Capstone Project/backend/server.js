@@ -24,7 +24,8 @@ app.use(
       "https://blog-frontend-pctmvzce0-maddulalokeshwar5-9107s-projects.vercel.app",
       "https://blog-frontend-hqaa1w1td-maddulalokeshwar5-9107s-projects.vercel.app",
       "https://blog-frontend-6m6bx9sga-maddulalokeshwar5-9107s-projects.vercel.app",
-      "https://blog-frontend-d950qsv2a-maddulalokeshwar5-9107s-projects.vercel.app"
+      "https://blog-frontend-d950qsv2a-maddulalokeshwar5-9107s-projects.vercel.app",
+      "https://blog-frontend-ten-xi.vercel.app"
     ],
     credentials: true
   })
